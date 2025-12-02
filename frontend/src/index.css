@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sci-base: #030712;
+  --sci-surface: #0f172a;
+  --sci-primary: #0ea5e9;
+  --sci-secondary: #8b5cf6;
+}
+
+body {
+  @apply bg-sci-base text-sci-text font-sans antialiased overflow-x-hidden;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.15), transparent 40%),
+    radial-gradient(circle at 0% 50%, rgba(139, 92, 246, 0.1), transparent 40%),
+    radial-gradient(circle at 100% 50%, rgba(244, 63, 94, 0.1), transparent 40%);
+  background-attachment: fixed;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-sci-base;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-sci-surface rounded-full border border-sci-primary/20 hover:bg-sci-primary/40 transition-colors;
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-sci-surface/40 backdrop-blur-md border border-white/10 shadow-xl;
+  }
+  
+  .neon-text {
+    text-shadow: 0 0 10px rgba(14, 165, 233, 0.5), 0 0 20px rgba(14, 165, 233, 0.3);
+  }
+
+  .neon-border {
+    box-shadow: 0 0 5px rgba(14, 165, 233, 0.5), inset 0 0 5px rgba(14, 165, 233, 0.2);
+  }
+}
