@@ -34,11 +34,11 @@ CREATE TABLE IF NOT EXISTS ratings (
 );
 
 -- Create indexes for better query performance
-CREATE INDEX idx_movies_title ON movies(title);
-CREATE INDEX idx_movies_genre ON movies(genre);
-CREATE INDEX idx_movies_year ON movies(EXTRACT(YEAR FROM release_date));
-CREATE INDEX idx_movies_distributor ON movies(distributor);
-CREATE INDEX idx_movies_budget ON movies(budget);
-CREATE INDEX idx_movies_mpa_rating ON movies(mpa_rating);
-CREATE INDEX idx_ratings_movie_id ON ratings(movie_id);
-CREATE INDEX idx_ratings_rater_id ON ratings(rater_id);
+CREATE INDEX IF NOT EXISTS idx_movies_title ON movies(title);
+CREATE INDEX IF NOT EXISTS idx_movies_genre ON movies(genre);
+CREATE INDEX IF NOT EXISTS idx_movies_year ON movies(EXTRACT(YEAR FROM release_date));
+CREATE INDEX IF NOT EXISTS idx_movies_distributor ON movies(distributor);
+CREATE INDEX IF NOT EXISTS idx_movies_budget ON movies(budget);
+CREATE INDEX IF NOT EXISTS idx_movies_mpa_rating ON movies(mpa_rating);
+CREATE INDEX IF NOT EXISTS idx_ratings_movie_id ON ratings(movie_id);
+CREATE INDEX IF NOT EXISTS idx_ratings_rater_id ON ratings(rater_id);

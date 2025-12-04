@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState, type FC, type FormEvent, type ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Save, ArrowLeft } from 'lucide-react';
 import { createMovie } from '../api/movies';
 import { Navbar } from '../components/Navbar';
 
-export const CreateMovie: React.FC = () => {
+export const CreateMovie: FC = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ export const CreateMovie: React.FC = () => {
         mpaRating: ''
     });
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setLoading(true);
         try {
@@ -35,7 +35,7 @@ export const CreateMovie: React.FC = () => {
         }
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
     };
 

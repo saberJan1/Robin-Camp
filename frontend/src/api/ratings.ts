@@ -1,5 +1,5 @@
 import { client } from './client';
-import { RatingAggregate, RatingResult, RatingSubmit } from '../types';
+import type { RatingAggregate, RatingResult, RatingSubmit } from '../types';
 
 export const submitRating = async (title: string, rating: RatingSubmit, raterId: string) => {
     const response = await client.post<RatingResult>(`/movies/${title}/ratings`, rating, {

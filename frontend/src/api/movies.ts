@@ -1,5 +1,5 @@
 import { client } from './client';
-import { Movie, MovieCreate, MoviePage } from '../types';
+import type { Movie, MovieCreate, MoviePage } from '../types';
 
 export const getMovies = async (params?: Record<string, any>) => {
     const response = await client.get<MoviePage>('/movies', { params });

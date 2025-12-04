@@ -1,28 +1,37 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { Zap } from 'lucide-react';
+import { Search } from 'lucide-react';
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+    onOpenAdmin?: () => void;
+}
+
+export const Navbar = ({ onOpenAdmin }: NavbarProps) => {
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-sci-primary/20">
+        <nav className="fixed top-0 left-0 right-0 z-50 glass-panel transition-all duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
+                <div className="flex items-center justify-between h-20">
                     <Link to="/" className="flex items-center space-x-2 group">
-                        <div className="p-2 rounded-full bg-sci-primary/10 group-hover:bg-sci-primary/20 transition-colors">
-                            <Zap className="w-6 h-6 text-sci-primary animate-pulse-slow" />
-                        </div>
-                        <span className="text-xl font-bold tracking-wider text-white neon-text">
-                            NEXUS<span className="text-sci-primary">DB</span>
+                        <span className="text-2xl font-bold tracking-tighter text-white">
+                            Cine<span className="text-sci-primary">Stream</span>
                         </span>
                     </Link>
 
-                    <div className="flex items-center space-x-8">
-                        <Link to="/" className="text-sci-muted hover:text-sci-primary transition-colors text-sm uppercase tracking-widest">
-                            Movies
-                        </Link>
-                        <Link to="/movie/new" className="px-4 py-2 rounded bg-sci-primary/10 border border-sci-primary/50 text-sci-primary hover:bg-sci-primary/20 hover:shadow-[0_0_15px_rgba(14,165,233,0.3)] transition-all duration-300 text-sm uppercase tracking-widest">
-                            Add Movie
-                        </Link>
+                    <div className="flex items-center space-x-6">
+                        <button className="text-gray-300 hover:text-white transition-colors">
+                            <Search className="w-5 h-5" />
+                        </button>
+                        {onOpenAdmin ? (
+                            <button
+                                onClick={onOpenAdmin}
+                                className="flex items-center px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all backdrop-blur-sm"
+                            >
+                                <span className="text-sm font-medium">Sign In</span>
+                            </button>
+                        ) : (
+                            <button className="flex items-center px-4 py-2 rounded-full bg-sci-primary hover:bg-sky-600 text-white transition-all shadow-lg shadow-sky-500/20">
+                                <span className="text-sm font-medium">Sign In</span>
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>

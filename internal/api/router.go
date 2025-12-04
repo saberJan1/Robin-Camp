@@ -1,9 +1,10 @@
 package api
 
 import (
-	"github.com/gorilla/mux"
 	"robin-camp/internal/api/handlers"
 	"robin-camp/internal/api/middleware"
+
+	"github.com/gorilla/mux"
 )
 
 func SetupRouter(
@@ -14,7 +15,8 @@ func SetupRouter(
 ) *mux.Router {
 	r := mux.NewRouter()
 
-	// Apply logger middleware globally
+	// Apply middleware globally
+	r.Use(middleware.CORS)
 	r.Use(middleware.Logger)
 
 	// Health check (no auth)
@@ -22,7 +24,7 @@ func SetupRouter(
 
 	// Movies endpoints
 	r.HandleFunc("/movies", movieHandler.ListMovies).Methods("GET")
-	
+
 	// Create movie requires auth
 	createMovieRouter := r.PathPrefix("/movies").Subrouter()
 	createMovieRouter.Use(middleware.AuthMiddleware(authToken))
@@ -30,7 +32,7 @@ func SetupRouter(
 
 	// Ratings endpoints
 	r.HandleFunc("/movies/{title}/rating", ratingHandler.GetRatingAggregate).Methods("GET")
-	
+
 	// Submit rating requires X-Rater-Id
 	submitRatingRouter := r.PathPrefix("/movies/{title}/ratings").Subrouter()
 	submitRatingRouter.Use(middleware.RaterIDMiddleware)

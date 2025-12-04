@@ -8,28 +8,23 @@ export default {
     extend: {
       colors: {
         sci: {
-          base: '#030712', // Very dark blue/black
-          surface: '#0f172a', // Dark blue gray
-          primary: '#0ea5e9', // Sky blue (Neon)
-          secondary: '#8b5cf6', // Violet (Neon)
-          accent: '#f43f5e', // Rose (Neon)
-          text: '#f8fafc', // Slate 50
-          muted: '#94a3b8', // Slate 400
+          base: '#f8fafc', // Slate 50 (Page Background)
+          surface: '#ffffff', // White (Card/Panel Background)
+          primary: '#0ea5e9', // Sky 500 (Primary Action)
+          secondary: '#64748b', // Slate 500 (Secondary Text/Icon)
+          accent: '#38bdf8', // Sky 400
+          text: '#0f172a', // Slate 900 (Main Text)
+          muted: '#64748b', // Slate 500 (Muted Text)
         }
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
-      animation: {
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
-      },
-      keyframes: {
-        glow: {
-          '0%': { boxShadow: '0 0 5px #0ea5e9, 0 0 10px #0ea5e9' },
-          '100%': { boxShadow: '0 0 20px #0ea5e9, 0 0 30px #0ea5e9' },
-        }
+      boxShadow: {
+        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+        'card': '0 0 0 1px rgba(0,0,0,0.03), 0 2px 8px rgba(0,0,0,0.04)',
+        'card-hover': '0 0 0 1px rgba(0,0,0,0.03), 0 8px 16px rgba(0,0,0,0.08)',
       }
     },
   },

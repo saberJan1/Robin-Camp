@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/gorilla/mux"
 	"robin-camp/internal/models"
 	"robin-camp/internal/service"
 )
